@@ -1,0 +1,100 @@
+[
+  {
+    "name": "toggle",
+    "op": "toggle",
+    "description": "Show/hide the in-game UI Inspector panel or toggle Ctrl+Shift+O element picker mode.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "description": "Whether the docked inspector panel is visible." },
+        "pickMode": { "type": "boolean", "description": "Whether cursor element-picking mode is active." }
+      }
+    },
+    "requiredGrants": ["ui.input"],
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": false
+    }
+  },
+  {
+    "name": "get_selection",
+    "op": "get_selection",
+    "description": "Return the currently inspected DOM element (CSS selector, ancestors, rect, matched CSS rules, computed styles, truncated outerHTML, and formatted AI Markdown context).",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "copyToClipboard": { "type": "boolean", "default": false }
+      }
+    },
+    "requiredGrants": ["session.read"],
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "get_dom_tree",
+    "op": "get_dom_tree",
+    "description": "Return a bounded DOM tree snapshot starting from rootSelector (default body), excluding the inspector overlay itself.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "rootSelector": { "type": "string", "default": "body" },
+        "maxDepth": { "type": "integer", "default": 4, "minimum": 1, "maximum": 8 },
+        "maxNodes": { "type": "integer", "default": 120, "minimum": 1, "maximum": 200 }
+      }
+    },
+    "requiredGrants": ["session.read"],
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "query_dom",
+    "op": "query_dom",
+    "description": "Query DOM elements in the active SimCity EAWebKit view matching a CSS selector (like $$() in Chrome DevTools).",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "selector": { "type": "string" },
+        "limit": { "type": "integer", "default": 20, "minimum": 1, "maximum": 64 },
+        "includeStyles": { "type": "boolean", "default": false }
+      },
+      "required": ["selector"]
+    },
+    "requiredGrants": ["session.read"],
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "highlight",
+    "op": "highlight",
+    "description": "Highlight (and optionally select) a DOM element matching a CSS selector in the live game UI.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "selector": { "type": "string" },
+        "select": { "type": "boolean", "default": true }
+      },
+      "required": ["selector"]
+    },
+    "requiredGrants": ["ui.input"],
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "readOnlyHint": false
+    }
+  }
+]

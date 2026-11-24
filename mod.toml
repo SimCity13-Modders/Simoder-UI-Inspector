@@ -1,0 +1,13 @@
+schemaVersion = 2
+format = "simoder.authoring"
+
+[metadata]
+id = "simoder.ui_inspector"
+name = "Simoder UI Inspector (DevTools)"
+version = "0.1.0"
+author = "Simoder"
+description = "Standalone Chrome-like UI Inspector overlay (Ctrl+Shift+O Picker, Ctrl+Alt+I Panel, Styles, Copy for AI) with optional MCP tools"
+
+[scripts]
+language = "js"
+entry = "dev_ui/inspector.js"

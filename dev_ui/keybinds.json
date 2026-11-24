@@ -1,0 +1,16 @@
+[
+  {
+    "id": "toggle_panel",
+    "title": "Toggle UI Inspector Panel",
+    "description": "Show or hide the Simoder UI Inspector overlay panel.",
+    "context": "global",
+    "defaultKey": "Ctrl+Alt+I"
+  },
+  {
+    "id": "toggle_picker",
+    "title": "Toggle Element Picker",
+    "description": "Enable or disable hover-and-click DOM element inspection mode.",
+    "context": "global",
+    "defaultKey": "Ctrl+Shift+O"
+  }
+]
